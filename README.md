@@ -1,40 +1,76 @@
-# Predator-Prey Dynamics and Dynamic Carrying Capacity
+# 📘 Dynamic Predator-Prey Theorem: Fluctuating Carrying Capacity
 
-## Overview
-This repository contains a mathematical model extending the traditional Lotka-Volterra predator-prey model by introducing a **dynamically fluctuating carrying capacity**. The hypothesis is that instead of assuming a constant carrying capacity, fluctuations due to environmental factors (like seasonal changes or habitat shifts) influence the populations of predators and prey.
+## I. Theorem Statement
 
-## Model Description
-The dynamic predator-prey model incorporates a time-dependent carrying capacity \(K(t)\) that fluctuates according to the following equation:
-\[
-K(t) = K_0 \left( 1 + \lambda \cdot \sin(\omega t) + \varphi \cdot \cos(\omega t) \right)
-\]
+In predator-prey ecosystems, when the environmental carrying capacity becomes time-dependent, the system no longer stabilizes at fixed equilibrium points.
+
+Let:
+- K(t): Time-dependent carrying capacity
+- P(t): Prey population
+- Q(t): Predator population
+
+Then for a system with non-constant K(t), the equilibrium points become dynamic and shift over time, stabilizing below the traditional fixed carrying capacity.
+
+---
+
+## II. Model Equations
+
+**Dynamic Carrying Capacity:**
+
+    K(t) = K0 * [1 + λ * sin(ωt) + φ * cos(ωt)]
+
 Where:
-- \( K_0 \): Baseline carrying capacity
-- \( \lambda \), \( \varphi \): Amplitude factors controlling the intensity of fluctuations
-- \( \omega \): Frequency of oscillations (seasonal variations, etc.)
+- K0: Baseline carrying capacity
+- λ, φ: Amplitude parameters
+- ω: Frequency of oscillation
 
-## Mathematical Model
-The modified Lotka-Volterra equations are:
-\[
-\frac{dP}{dt} = \alpha P \left( 1 - \frac{P}{K(t)} \right) - \beta P Q
-\]
-\[
-\frac{dQ}{dt} = \delta P Q - \gamma Q
-\]
+**Modified Lotka-Volterra Equations:**
+
+    dP/dt = α * P * (1 - P / K(t)) - β * P * Q  
+    dQ/dt = δ * P * Q - γ * Q
+
 Where:
-- \( P \): Prey population
-- \( Q \): Predator population
-- \( \alpha, \beta, \delta, \gamma \): Model parameters for growth and interaction rates
+- α: Prey growth rate
+- β: Predation rate
+- δ: Predator growth rate per consumed prey
+- γ: Predator mortality rate
 
-The modification with the dynamic carrying capacity \(K(t)\) adjusts the interaction terms based on the available resources, leading to the following equations:
-\[
-\frac{dP}{dt} = \alpha P \left( 1 - \frac{P}{K(t)} \right) - \beta P Q
-\]
-\[
-\frac{dQ}{dt} = \delta P Q - \gamma Q
-\]
+---
 
-## How to Use This Model
-1. Clone the repository:
-```bash
-git clone https://github.com/your-username/predator-prey-dynamics.git
+## III. Equilibrium Behavior
+
+Given K(t) is fluctuating:
+
+**Equilibrium Prey Population:**
+
+    P*(t) = (α * K(t)) / (β + γ)
+
+**Equilibrium Predator Population:**
+
+    Q*(t) = (δ * α * K(t)) / [β * (γ + δ)]
+
+Thus, both P*(t) and Q*(t) are functions of time and shift with K(t).
+
+---
+
+## IV. Predictions
+
+1. Populations stabilize **below** fixed K0 in environments with seasonal or fluctuating resources.
+2. Oscillations in P(t) and Q(t) will follow the frequency ω of K(t).
+3. Real-world ecosystems with dynamic resources match this model more closely than static-K models.
+
+---
+
+## V. Simulation Suggestions
+
+- Use numerical ODE solvers (Euler or Runge-Kutta)
+- Simulate time series of P(t) and Q(t) using sinusoidal K(t)
+- Compare with empirical ecological population data
+
+---
+
+## VI. Applications
+
+- **Ecology**: Improved modeling of population cycles
+- **Conservation**: Predicting population collapse under environmental stress
+- **Biological Systems**: Modeling time-varying resource constraints
