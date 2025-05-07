@@ -1,0 +1,111 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\geometry{margin=1in}
+\title{Predator-Prey Dynamics and Dynamic Carrying Capacity: Non-linear Approaches to Ecological Stability}
+\author{}
+\date{}
+
+% Theorem environment
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\maketitle
+
+\section*{Overview}
+
+This theorem extends the traditional Lotka-Volterra predator-prey model by introducing a \textbf{dynamically fluctuating carrying capacity}. It proposes that environmental variability alters equilibrium population sizes, stabilizing predator and prey populations below the fixed carrying capacity assumed in classical models.
+
+\begin{theorem}[Predator-Prey Dynamics and Dynamic Carrying Capacity]
+Fluctuations in carrying capacity \( K(t) \) due to environmental and resource changes drive non-linear dynamics in predator-prey systems, leading to dynamic equilibrium points. Predator and prey populations stabilize below the traditionally fixed carrying capacity in response to variability in available resources.
+\end{theorem}
+
+\section*{Mathematical Formulation}
+
+\subsection*{1. Dynamic Carrying Capacity}
+
+\[
+K(t) = K_0 \left( 1 + \lambda \cdot \sin(\omega t) + \varphi \cdot \cos(\omega t) \right)
+\]
+
+Where:
+\begin{itemize}
+  \item \( K_0 \): Baseline carrying capacity
+  \item \( \lambda, \varphi \): Amplitude coefficients
+  \item \( \omega \): Frequency of environmental oscillations
+\end{itemize}
+
+\subsection*{2. Modified Lotka-Volterra Equations}
+
+\textbf{Prey Dynamics:}
+\[
+\frac{dP}{dt} = \alpha P \left(1 - \frac{P}{K(t)} \right) - \beta P Q
+\]
+
+\textbf{Predator Dynamics:}
+\[
+\frac{dQ}{dt} = \delta P Q - \gamma Q
+\]
+
+Where:
+\begin{itemize}
+  \item \( P \): Prey population
+  \item \( Q \): Predator population
+  \item \( \alpha \): Prey growth rate
+  \item \( \beta \): Predator-prey interaction coefficient
+  \item \( \delta \): Predator reproduction rate per prey
+  \item \( \gamma \): Predator death rate
+\end{itemize}
+
+\subsection*{3. Equilibrium Populations}
+
+\textbf{Time-dependent equilibrium values:}
+\[
+P^*(t) = \frac{\alpha K(t)}{\beta + \gamma}, \quad
+Q^*(t) = \frac{\delta \alpha K(t)}{\beta(\gamma + \delta)}
+\]
+
+These equilibria vary over time and remain below the fixed \( K_0 \), reflecting ecological response to environmental variation.
+
+\section*{Testable Predictions}
+
+\begin{enumerate}
+  \item In ecosystems with fluctuating resources (e.g., seasonal or climate-driven), predator and prey populations will stabilize below the fixed carrying capacity, following \( K(t) \).
+  \item A dynamic carrying capacity alters the amplitude and frequency of predator-prey oscillations compared to classical models.
+  \item Empirical observations from marine or terrestrial ecosystems with resource variability will support the predictions of this model over static-capacity models.
+\end{enumerate}
+
+\section*{Peer Review Considerations}
+
+\textbf{Logical Consistency:}
+\begin{itemize}
+  \item Is the use of fluctuating \( K(t) \) justified biologically?
+  \item Could other models explain the same behavior?
+\end{itemize}
+
+\textbf{Mathematical Soundness:}
+\begin{itemize}
+  \item Are the modified equations solvable and stable?
+  \item How sensitive is the model to the parameters \( \lambda, \varphi, \omega \)?
+\end{itemize}
+
+\textbf{Empirical Feasibility:}
+\begin{itemize}
+  \item Can this model be validated using ecological field data?
+  \item Are there documented cases of fluctuating equilibrium populations?
+\end{itemize}
+
+\textbf{Simulation Viability:}
+\begin{itemize}
+  \item Could platforms like MESA or NetLogo be used to simulate this model?
+  \item What simulation parameters would best reflect real-world variability?
+\end{itemize}
+
+\section*{Conclusion}
+
+This theorem introduces a more ecologically realistic view of predator-prey systems by embedding time-dependent environmental changes directly into the carrying capacity term. The implications for ecological modeling, conservation, and resource management are substantial, particularly in the face of climate change and habitat variability.
+
+\end{document}
